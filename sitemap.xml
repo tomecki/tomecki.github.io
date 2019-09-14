@@ -3,37 +3,37 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/</loc>
+    <loc>http://dziopa.com/</loc>
     <lastmod>2019-09-14T19:43:16+02:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/blog/</loc>
+    <loc>http://dziopa.com/tags/blog/</loc>
     <lastmod>2019-09-14T18:49:20+02:00</lastmod>
   </url>
   
   <url>
-    <loc>/post/hello/</loc>
+    <loc>http://dziopa.com/post/hello/</loc>
     <lastmod>2019-09-14T18:49:20+02:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/post/</loc>
+    <loc>http://dziopa.com/tags/post/</loc>
     <lastmod>2019-09-14T18:49:20+02:00</lastmod>
   </url>
   
   <url>
-    <loc>/post/</loc>
+    <loc>http://dziopa.com/post/</loc>
     <lastmod>2019-09-14T18:49:20+02:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/</loc>
+    <loc>http://dziopa.com/tags/</loc>
     <lastmod>2019-09-14T18:49:20+02:00</lastmod>
   </url>
   
   <url>
-    <loc>/categories/</loc>
+    <loc>http://dziopa.com/categories/</loc>
   </url>
   
 </urlset>

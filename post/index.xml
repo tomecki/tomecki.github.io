@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Dziopa.com</title>
-    <link>/post/</link>
+    <link>http://dziopa.com/post/</link>
     <description>Recent content in Posts on Dziopa.com</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 14 Sep 2019 18:49:20 +0200</lastBuildDate>
     
-	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://dziopa.com/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Hello!</title>
-      <link>/post/hello/</link>
+      <link>http://dziopa.com/post/hello/</link>
       <pubDate>Sat, 14 Sep 2019 18:49:20 +0200</pubDate>
       
-      <guid>/post/hello/</guid>
+      <guid>http://dziopa.com/post/hello/</guid>
       <description>This is the place where I will be sharing my thoughts and tinkering. Hope you will like it!</description>
     </item>
     
