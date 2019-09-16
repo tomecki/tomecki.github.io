@@ -1,0 +1,40 @@
+li {
+    list-style: disc
+}
+pre {
+    max-width: 840px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.nav-brand {
+    font-family: 'Karla', sans-serif;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Karla', sans-serif;
+}
+body {
+    font-family: 'Lato', sans-serif;
+}
+
+.post_thumbnail {
+    margin-bottom: 1cm;
+}
+
+table {
+    max-width: 840px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.post img:not(.icon, .post_thumbnail) {
+    width: auto !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center;
+    display: block;
+    max-width: 840px;
+}
+ul {
+    list-style: circle;
+}
