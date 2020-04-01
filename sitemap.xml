@@ -3,13 +3,33 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://dziopa.com/</loc>
-    <lastmod>2019-09-14T19:43:16+02:00</lastmod>
+    <loc>https://dziopa.com/tags/blog/</loc>
+    <lastmod>2020-04-01T18:49:20+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://dziopa.com/tags/blog/</loc>
-    <lastmod>2019-09-14T18:49:20+02:00</lastmod>
+    <loc>https://dziopa.com/post/2-izolacja/</loc>
+    <lastmod>2020-04-01T18:49:20+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dziopa.com/tags/post/</loc>
+    <lastmod>2020-04-01T18:49:20+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dziopa.com/post/</loc>
+    <lastmod>2020-04-01T18:49:20+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dziopa.com/tags/</loc>
+    <lastmod>2020-04-01T18:49:20+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dziopa.com/</loc>
+    <lastmod>2019-09-14T19:43:16+02:00</lastmod>
   </url>
   
   <url>
@@ -19,21 +39,6 @@
   
   <url>
     <loc>https://dziopa.com/post/hello/</loc>
-    <lastmod>2019-09-14T18:49:20+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://dziopa.com/tags/post/</loc>
-    <lastmod>2019-09-14T18:49:20+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://dziopa.com/post/</loc>
-    <lastmod>2019-09-14T18:49:20+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://dziopa.com/tags/</loc>
     <lastmod>2019-09-14T18:49:20+02:00</lastmod>
   </url>
   
