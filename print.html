@@ -1,0 +1,559 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title></title>
+        <meta name="robots" content="noindex" />
+
+
+        <!-- Custom HTML head -->
+        
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="minifying_docker_images.html"><strong aria-hidden="true">1.</strong> Minifying docker images</a></li><li class="chapter-item expanded "><a href="1-getting-started-nlp.html"><strong aria-hidden="true">2.</strong> Getting started with NLP in Polish</a></li><li class="chapter-item expanded "><a href="3-youre-my-type.html"><strong aria-hidden="true">3.</strong> You're my type: Python, meet static typing</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="put-your-docker-images-on-a-diet"><a class="header" href="#put-your-docker-images-on-a-diet">Put your docker images on a diet</a></h1>
+<h2 id="why-big--bad"><a class="header" href="#why-big--bad">Why big = bad?</a></h2>
+<p>Large images are bad in two ways:</p>
+<ul>
+<li>they take up a lot of space on the disk. Docker daemon enforces an upper bound on the total size of images on your disk - if you rebuild the images frequently and they are large, you will end up cleaning up your cache very frequently.</li>
+<li>they take a lot of time to download. This is bad, because:
+<ul>
+<li>not everyone has an unlimited broadband connection! It sucks when you have to download fat docker image using your cafe's shitty wifi or using your mobile plan allowance</li>
+<li>there are cases when bandwidth can become costly. If you host your images in a private repo at your cloud provider, it's quite likely that they'll charge you for egress bytes.</li>
+</ul>
+</li>
+</ul>
+<p>So - how big is it?</p>
+<pre><code>docker image list | grep &lt;image name&gt;
+</code></pre>
+<p>will list all available tags for your image with their uncompressed sizes. This is how much the image actually takes on your hard drive.</p>
+<pre><code>docker manifest inspect &lt;image&gt; | jq &quot;.layers | map(.size) | add / 1024&quot;
+</code></pre>
+<p>will output a single number: the total size in MB of compressed layers. This is how much needs to be downloaded over the network in case of layer cache misses (worst case).</p>
+<h2 id="best-practices"><a class="header" href="#best-practices">Best practices</a></h2>
+<p>Generic advice is all about understanding how docker image layers work. In general, each layer contains only a set of differences from the previous layer. This applies to not only <em>adding</em> and <em>updating</em> files, but also <strong>removing</strong>.</p>
+<p>In order to keep your keep your layer sizes small, only persist changes which are relevant to functioning of the final container. Do not persist: package manager caches, downloaded installers and tremporary artifacts.</p>
+<p>Common strategy to solving this problem is chaining installing and cleanup commands as a single layer definition. </p>
+<p>instead of doing this:</p>
+<pre><code>FROM ubuntu:20.04                    # 66 MB
+RUN apt update                      # 27 MB
+RUN apt install -y curl libpq-dev   # 16 MB
+# total size: 109 MB
+</code></pre>
+<p>do:</p>
+<pre><code>FROM ubuntu:20.04                     # 66 MB
+# removing apt cache after successful installation of dependencies
+RUN apt update \                     # 16 MB
+    &amp;&amp; apt install -y curl libpq-dev \
+    &amp;&amp; rm -rf /var/lib/apt/lists/*
+# total size: 82 MB
+</code></pre>
+<p>Another common approach to solving this problem is to use multi-stage build. Generally, the idea here is to perform some potentially heavy operations (e.g. compiling a binary from sources) in a separate layer, and then to copy just the resulting artifacts into new, &quot;clean&quot; layer. Example:</p>
+<pre><code># Stage 1: build the Rust binary.
+FROM rust:1.40 as builder
+WORKDIR /usr/src/myapp
+COPY . .
+RUN cargo install --path .
+
+# Stage 2: install runtime dependencies and copy the static binary into
+a clean image
+
+FROM debian:buster-slim
+RUN apt-get update \
+    &amp;&amp; apt-get install -y extra-runtime-dependencies \
+    &amp;&amp; rm -rf /var/lib/apt/lists/*
+COPY --from=builder /usr/local/cargo/bin/myapp /usr/local/bin/myapp
+CMD [&quot;myapp&quot;]
+</code></pre>
+<p>Since every package manager has it's own arguments and best practices, the easiest way to manage this complexity is to use a tool which can find quick-wins in your Dockerfile definition. Open source <strong><a href="https://github.com/hadolint/hadolint">hadolint</a></strong> analyzes your Dockerfile for common issues.</p>
+<h2 id="removing-cruft"><a class="header" href="#removing-cruft">Removing cruft</a></h2>
+<p>If you've been developing with your Dockerfile for some time, there's a good chance you experimented with different libraries and dependencies, which often have the same purpose. The general advice here is: take a step back and analyze every dependency in your Dockerfile. <strong>Throw away each and every dependency which is not essential to the purpose of the image</strong>.</p>
+<p>Another very effective approach at elliminating cruft is to examine the contents of the image layers. I cannot recommend enough <strong><a href="https://github.com/wagoodman/dive">dive</a></strong> CLI, which lets you look at the changes applied by each layer and hints at the largest and repeatedly modified files in the image.</p>
+<p>By examining docker build trace you may also identify that you're installing GUI-specific packages (e.g. GNOME icons, extra fonts) which shouldn't be required for your console-only application. Good practice is to analyze the reverse dependencies of these packages and look for top-level packages which triggered the installation of the unexpected fonts. E.g. <a href="https://packages.ubuntu.com/bionic/openjdk-11-jre">openjdk-11-jre package</a> bundles suite of dependencies for developing UI apps. Some tips on debugging the issue:</p>
+<ul>
+<li>just try removing the suspicious system package. Package managers should resolve the unmet dependencies and suggest potential top-level offending package as scheduled for removal.</li>
+<li>use tools like <code>apt-rdepends &lt;package&gt;</code> to see a flattened list of packages which depend on the <code>&lt;package&gt;</code>.</li>
+</ul>
+<h2 id="base-image-choice"><a class="header" href="#base-image-choice">Base image choice</a></h2>
+<p>Choosing the base image is one of the very first decisions people make when creating new image. It's quite common that the choice is affected by e.g. some example image on github, or what's already being used among your colleagues or organization.</p>
+<p>Changing the base image can be quite significant to the overall image, but sometimes it's definitely worth revisiting that. Here's a quick walthrough of common points for consideration:</p>
+<ul>
+<li>choosing a <code>-slim</code> image variant. Some distros (e.g. debian) offer a stripped-down version, with features which are redundant to most images removed. For non-interactive console applications, you usually do not need documentation and man pages.</li>
+<li><code>alpine</code> images - <code>alpine</code> is a container-optimized linux distribution, which uses it's own package manager (<code>apk</code>) and alternative implementation of <code>libc</code>, <code>musl</code>. The final images are usually very small, although there are some limitations:
+<ul>
+<li>in case your application relies on <code>libc</code>, you will need to recompile it for <code>musl</code>.</li>
+<li>own package repository is sometimes lacking in comparison to <code>debian</code> and the versions may not be updated as frequently</li>
+<li>relatively small community support</li>
+</ul>
+</li>
+<li><code>distroless</code> images - the slimming down approach taken to extreme, with virtually <em>all</em> non-essential components (including shell!) of the operating system stripped out from debian images. Conceptually, the application and all it's dependencies should be copied into the <em>distroless</em> image from a previous image stage (see <a href="https://github.com/GoogleContainerTools/distroless/blob/main/examples/python3-requirements/Dockerfile">example Dockerfile</a>, more usages in <a href="https://github.com/kubernetes/kubernetes/search?q=distroless">kubernetes</a>)
+<ul>
+<li>could be a good choice if your application is statically linked <em>or</em> has a well-defined set of dependencies (think: limited set of shared libraries). </li>
+</ul>
+</li>
+</ul>
+<h2 id="image-specialization"><a class="header" href="#image-specialization">Image specialization</a></h2>
+<p>Common issue with rapidly evolving codebases is that the images are not specialized - image serves as a common execution environment for a very distinct use cases. For the purpose of this section, let's call these &quot;furball&quot; images.</p>
+<p>Best practice is to identify the key use cases of the particular components and build dedicated images for these use cases. This way you can encourage better separation of concerns in your codebase.</p>
+<p>Assuming all the images are retaining <em>all</em> their dependencies, in best case you will experience summed size of all specialized layers to be exactly the same as the &quot;furball&quot; image. But, the benefits are substantial:</p>
+<ul>
+<li>specialization may encourage deeper cleanup of the dependencies</li>
+<li>specialization may encourage bigger changes in the organization of the codebase, like factoring the code into components.</li>
+<li>running specialized workflow will require fetching way smaller image</li>
+<li>Since you usually don't work on all components at the same time, you'll experience significant improvement in quality of life - you'll be downloading just the dependencies used by your component!</li>
+</ul>
+<h2 id="runtime-tools"><a class="header" href="#runtime-tools">Runtime tools</a></h2>
+<p>There were multiple attempts to minify the docker images by analyzing the runtime usage of files within the container. How this is supposed to work:</p>
+<ol>
+<li>spin up the container with a sidecar container tracking every access to a file inside the filesystem</li>
+<li>Perform actions on the running container covering all of the use cases of the image.</li>
+<li>Let the tool export the image containing just the files from the filesystem which were accessed in previous step.</li>
+</ol>
+<p>The results of this workflow can be very good, although your results may vary depending on the use cases. Some points for consideration:</p>
+<ul>
+<li>the image is no longer a result of <code>docker build</code></li>
+<li>the slimming down workflow may remove some files from the image which can affect the functionality of the image or it's security =&gt; <strong>how much do you trust the tool that the image is secure and correct</strong>?</li>
+<li>image may not be suitable for any other use case than the one used in the slimming down process. This may be a showstopper for the images used for experimentation.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="getting-started-with-natural-language-processing-in-polish"><a class="header" href="#getting-started-with-natural-language-processing-in-polish">Getting started with Natural Language Processing in Polish</a></h1>
+<p>There are countless tutorials on how to do NLP on the internet. Why would you care to read another one? Well, we will be looking into analysing Polish language, which is still rather underdeveloped in comparison to English. </p>
+<p>Polish language is much more complex when compared to English language, as it contains 7 cases  (<em>deklinacja</em>), 3 kinds (masculine, femenine, unspecified) and 11 different templates of verb conjugation, not to mention the exceptions <a href="1-getting-started-nlp.html#cite-1">[1]</a> <a href="1-getting-started-nlp.html#cite-2">[2]</a> <a href="1-getting-started-nlp.html#cite-3">[3]</a>. English is rather simple: verb conjugation is easy, nouns pluralise easily, there are hardly any genders.</p>
+<h2 id="corpus"><a class="header" href="#corpus">Corpus</a></h2>
+<p>For the sake of this analysis, we will look at collection of articles obtained (the nice word for <em>scraped</em>) from one of the leading right-wing news websites, <a href="http://wpolityce.pl">wpolityce.pl</a>.</p>
+<p><img src="/images/1-assets/fullarticle.png" alt="Sample article" />
+Sample article from the dataset.</p>
+<p>The articles were collected over a period of 15 days ending 10th June 2019, only articles linked from front page were collected. In total there are 1453 unique articles. I shall later publish my insights on collecting datasets from the wild.</p>
+<h2 id="tokenizing"><a class="header" href="#tokenizing">Tokenizing</a></h2>
+<p>Tokens are the smallest unit of the language that's most commonly taken into account when doing text analysis. You may think of it as a word, which in most cases it is. Things get trickier in English with it's abbreviations like <em>I'd</em> or <em>we've</em> but Polish is much easier in this aspect.</p>
+<pre><code class="language-bash">„|Gazeta|Wyborcza|”|wielokrotnie|na| |swoich|łamach|wspierała|działania|Fundacji|Nie|lękajcie|się|Marka|Lisińskiego|.
+</code></pre>
+<p>Sample tokenization of a sentence from the corpus, tokens are delimited with vertical bars. Please note empty token between words <em>na</em> and <em>swoich</em> - it's a dirty whitespace, which we'll deal with shortly.</p>
+<p>In Python, you can tokenize using either NLTK's <a href="https://www.nltk.org/api/nltk.tokenize.html">nltk.tokenize</a> package or spaCy's <a href="https://spacy.io/api/tokenizer">tokenizer</a> using pretrained language models. I have used the latter with <a href="https://spacy.io/models/xx#xx_ent_wiki_sm">xx_ent_wiki_sm</a> multilanguage model. In empirical analysis it appeared to split up the tokens in a plausible manner.</p>
+<p><img src="/images/1-assets/article-token-length.png" alt="The distribution of numbers of tokens for an article looks as follows: " /></p>
+<p>The distribution of numbers of tokens in an article: vertical axis shows number of articles falling into particular bucket, horizontal axis is the token lenght of article.</p>
+<h2 id="quantitative-analysis-corpus"><a class="header" href="#quantitative-analysis-corpus">Quantitative analysis: corpus</a></h2>
+<p>Reading the entire dataset without any cleaning yields mediocre results. The resulting corpus contains:</p>
+<ul>
+<li>badly interpreted non-breaking space from latin1 encoding (<code>&quot;\xa0&quot;</code>)</li>
+<li>whitespace-only tokens (<code>&quot;\n&quot;</code>, <code>&quot;\n \n&quot;</code> and others)</li>
+<li>punctuation, also in repeated non-ambiguous way (multiple quote chars, hyphen/minus used interchangeably)</li>
+<li>stopwords: common words that skew the word distribution but do not bring any value to the analysis.</li>
+</ul>
+<h3 id="frequent-words-unigrams"><a class="header" href="#frequent-words-unigrams">Frequent words (unigrams)</a></h3>
+<p><img src="/images/1-assets/clean-token-frequency.png" alt="10 most frequent tokens in a clean dataset" /></p>
+<div class="table-wrapper"><table><thead><tr><th>word</th><th>frequency</th></tr></thead><tbody>
+<tr><td>PiS</td><td>1444</td></tr>
+<tr><td>proc</td><td>1198</td></tr>
+<tr><td>wyborach</td><td>835</td></tr>
+<tr><td>powiedział</td><td>726</td></tr>
+<tr><td>PAP</td><td>709</td></tr>
+<tr><td>PSL</td><td>676</td></tr>
+<tr><td>r.</td><td>653</td></tr>
+<tr><td>Polski</td><td>652</td></tr>
+<tr><td>Polsce</td><td>625</td></tr>
+<tr><td>Europejskiej</td><td>601</td></tr>
+</tbody></table>
+</div>
+<h4 id="word-cloud"><a class="header" href="#word-cloud">Word cloud</a></h4>
+<p>The raw data above can be visualised using a word cloud. The idea is to represent the frequency of the word with it's relative size on the visualisation, framing it in visually attractive and appealing way.</p>
+<p>You can find plenty of online generators that will easily let you tweak the shape, colors and fonts. Check out my wordcloud of 50 most common words from the corpus generated using generator from <a href="https://worditout.com">worditout.com</a>
+<img src="/images/1-assets/wordcloud.png" alt="Sample wordcloud" /></p>
+<p>Concluding our unigram analysis, the most common topics were revolving around PiS (abbreviation used by the polish ruling party), elections (<em>wyborach</em> stands for elections, <em>proc.</em> is abbreviated percent).</p>
+<h3 id="ngrams"><a class="header" href="#ngrams">Ngrams</a></h3>
+<p>Ngram is just a sequence of <em>n</em> consecutive tokens. For <em>n=2</em> we also use word <em>bigram</em>. You can get the most frequent Ngrams (sequences of words of particilar length) using either <code>nltk.ngrams</code> or trivial custom code. For length 2-3 you are highly likely to fetch popular full names. Longer ngrams are likely to catch parts of frequently repeated sentences, like promos, ads and references.</p>
+<h4 id="bigrams"><a class="header" href="#bigrams">Bigrams</a></h4>
+<p>As expected, we are catching frequent proper names of entities in the text. Below is a breakdown of 10 most frequent bigrams from the corpus:</p>
+<div class="table-wrapper"><table><thead><tr><th>frequency</th><th>bigram</th><th>interpretation</th></tr></thead><tbody>
+<tr><td>377</td><td>Koalicji Europejskiej</td><td>political party</td></tr>
+<tr><td>348</td><td>Parlamentu Europejskiego</td><td>name of institution</td></tr>
+<tr><td>322</td><td>PAP EOT</td><td>source/author alias</td></tr>
+<tr><td>261</td><td>4 czerwca</td><td>important date discussed at the time</td></tr>
+<tr><td>223</td><td>Koalicja Europejska</td><td>political party</td></tr>
+<tr><td>136</td><td>Andrzej Duda</td><td>full name of President of Poland</td></tr>
+<tr><td>126</td><td>Jarosław Kaczyński</td><td>full name of important politician</td></tr>
+<tr><td>126</td><td>Jana Pawła</td><td>most likely: prefix from <em>John Paul II</em></td></tr>
+<tr><td>125</td><td>Pawła II</td><td>most likely: suffix from <em>John Paul II</em></td></tr>
+</tbody></table>
+</div>
+<h4 id="sixgrams"><a class="header" href="#sixgrams">Sixgrams</a></h4>
+<p>Longer ngrams expose frequent phrases used throughout the corpus. Polish has a lot of cases and persons, so this method is not of much help to find frequent phrases in the language itself; you are more likely to find repeated parts of sentences or adverts.</p>
+<div class="table-wrapper"><table><thead><tr><th>frequency</th><th>sixgram</th></tr></thead><tbody>
+<tr><td>61</td><td>Kup nasze pismo w kiosku lub</td></tr>
+<tr><td>61</td><td>nasze pismo w kiosku lub skorzystaj</td></tr>
+<tr><td>61</td><td>pismo w kiosku lub skorzystaj z</td></tr>
+<tr><td>61</td><td>w kiosku lub skorzystaj z bardzo</td></tr>
+<tr><td>61</td><td>kiosku lub skorzystaj z bardzo wygodnej</td></tr>
+</tbody></table>
+</div>
+<p>Clearly, there is an issue here. While doing our quantitative analysis our distributions and counts are skewed by the advert texts being present in most of the articles. Ideally we should factor these phrases out of our corpus, either at a stage of data collection (improving the parser to annotate/omit these phrase) or data preprocessing (something we're doing in this article).</p>
+<p>Much better idea is to perform ngrams analysis on lemmatized text. This way you may mine more knowledge about the language, not just repeated phrases.</p>
+<h2 id="morphological-analysis"><a class="header" href="#morphological-analysis">Morphological analysis</a></h2>
+<p>In the previous paragraph we saw that the different forms of the words will make learning about the language harder - we are capturing the information about the entire word, with the particular gender, tense and case. This becomes particularly disruptive in Polish. </p>
+<p>One potential solution is called <em>morphological analysis</em>. This is a process of mapping a word to all of it's potential dictionary base words (<em>lexems</em>). Sample lemmatization:</p>
+<div class="table-wrapper"><table><thead><tr><th>Original word</th><th>Lemma tag</th><th>Lexem</th></tr></thead><tbody>
+<tr><td>Dyrektywa</td><td>dyrektywa</td><td>subst:sg:nom:f</td></tr>
+<tr><td>PSD2</td><td>PSD2</td><td>ign</td></tr>
+<tr><td>zawiera</td><td>zawierać</td><td>fin:sg:ter:imperf</td></tr>
+<tr><td>przepisy</td><td>przepis</td><td>subst:pl:nom:m3</td></tr>
+<tr><td>odnoszące</td><td>odnosić</td><td>pact:sg:nom:n:imperf:aff</td></tr>
+<tr><td>się</td><td>się</td><td>qub</td></tr>
+<tr><td>do</td><td>do</td><td>prep:gen</td></tr>
+<tr><td>płatności</td><td>płatność</td><td>subst:sg:gen:f</td></tr>
+<tr><td>elektronicznych</td><td>elektroniczny</td><td>adj:pl:gen:m1:pos</td></tr>
+<tr><td>realizowanych</td><td>realizować</td><td>ppas:pl:gen:m1:imperf:aff</td></tr>
+<tr><td>wewnątrz</td><td>wewnątrz</td><td>adv:pos</td></tr>
+<tr><td>Unii</td><td>unia</td><td>subst:sg:gen:f</td></tr>
+<tr><td>Europejskiej</td><td>europejski</td><td>adj:sg:gen:f:pos</td></tr>
+<tr><td>.</td><td>.</td><td>interp</td></tr>
+</tbody></table>
+</div>
+<p>We will not be implementing this part from scratch, instead we can use resources from IPI PAN (Polish Academy of Science), specifically a tool called <a href="http://morfeusz.sgjp.pl/">Morfeusz</a>. </p>
+<p>Morfeusz is a morphosyntactic analyzer which you can use to find all word lexems and the forms. The output will be slightly different than the table above: instead, for every input word Morfeusz will output all of it's possible dictionary forms.</p>
+<h3 id="usage"><a class="header" href="#usage">Usage</a></h3>
+<p>I assume you are running either a recent Ubuntu or Fedora. After fetching the right version from <a href="http://morfeusz.sgjp.pl/download/">Morfeusz download page</a> do the following:</p>
+<pre><code class="language-bash">tar xzfv &lt;path to archive&gt;
+sudo cp morfeusz/lib/libmorfeusz2.so /usr/lib/local
+sudo chmod a+x /usr/lib/local/libmorfeusz2.so
+sudo echo &quot;/usr/local/lib&quot; &gt; /etc/ld.so.conf.d/local.conf
+sudo ldconfig
+</code></pre>
+<p>Now we can download and install the python egg from morfeusz download page. </p>
+<pre><code class="language-bash">easy_install &lt;path_to_downloaded_egg&gt;
+</code></pre>
+<p>The best thing about the python package is that you can retrieve the result from the analyzer using just a couple of python lines:</p>
+<pre><code class="language-python">import morfeusz2
+m = morfeusz2.Morfeusz()
+result = m.analyze(&quot;Ala ma kota, kot ma Alę.&quot;)
+# the result is:
+[(0, 1, ('Dyrektywa', 'dyrektywa', 'subst:sg:nom:f', ['nazwa_pospolita'], [])),   
+ (1, 2, ('PSD2', 'PSD2', 'ign', [], [])),                                         
+ (2, 3, ('zawiera', 'zawierać', 'fin:sg:ter:imperf', [], [])),                    
+ (3,                                                                              
+  4,                                                                              
+  ('przepisy', 'przepis', 'subst:pl:nom.acc.voc:m3', ['nazwa_pospolita'], [])),   
+ (4,                                     
+  5,                                     
+  ('odnoszące',                                                                   
+   'odnosić',                                                                     
+   'pact:pl:nom.acc.voc:m2.m3.f.n:imperf:aff',                                    
+   [],                                                                            
+   [])),                                 
+ (4, 5, ('odnoszące', 'odnosić', 'pact:sg:nom.acc.voc:n:imperf:aff', [], [])),    
+</code></pre>
+<p>Putting it all in a pandas DataFrame is a trivial task as well:</p>
+<pre><code class="language-python">import pandas as pd
+colnames = [&quot;token_start&quot;, &quot;token_end&quot;, &quot;segment&quot;, &quot;lemma&quot;, &quot;interp&quot;, &quot;common&quot;, &quot;qualifiers&quot;]
+df = pd.DataFrame.from_records([(elem[0], elem[1], *elem[2]) for elem in result], columns=colnames)
+</code></pre>
+<p><img src="/images/1-assets/pandas_df.png" alt="" /></p>
+<p>Helpful links on tackling Morfeusz:</p>
+<ul>
+<li><a href="http://download.sgjp.pl/morfeusz/Morfeusz2.pdf">Full docs on Morfeusz</a></li>
+<li><a href="http://www.ipipan.waw.pl/~wolinski/publ/znakowanie.pdf">Meaning of the morphosyntactic tags</a></li>
+</ul>
+<h3 id="lemmatization"><a class="header" href="#lemmatization">Lemmatization</a></h3>
+<p>You have already seen the output of a lemmatizer at the beginning of previous section. In contrast to Morfeusz's output, this time we want to obtain a mapping for each word to it's most probable dictionary form.</p>
+<p>In order to obtain direct tags instead of list of tags for each token, you will need to go deep into morphological taggers land. Your options are:</p>
+<ul>
+<li><a href="http://nlp.pwr.wroc.pl/redmine/projects/wcrft/wiki/">WCRFT</a> - actually having a working demo <a href="http://ws.clarin-pl.eu/tager.shtml">here</a>. Requires some skill to get it to work, dependencies are non-trivial to put together,</li>
+<li><a href="http://zil.ipipan.waw.pl/PANTERA">PANTERA</a> - doesn't appear to be actively maintained</li>
+<li><a href="https://github.com/kawu/concraft-pl">Concraft</a> - implemented in Haskell, looks to be the easiest one to get running</li>
+</ul>
+<p>If you are just doing a casual analysis of text, you may want to consider outsourcing the whole tagging process to a RESTful API, like <a href="http://nlp.pwr.wroc.pl/redmine/projects/nlprest2/wiki/Asynapi">http://nlp.pwr.wroc.pl/redmine/projects/nlprest2/wiki/Asynapi</a>. </p>
+<p>You can easily reverse-engineer the exact calls to the API using Firefox/Chrome dev tools. This way you can find the correct values for the parameters.
+<img src="/images/1-assets/devtools.png" alt="devtools" /></p>
+<p>As with any API provided to the public, you should notify the provider about your intentions and remember about some sane throttling of requests. Moreover, it's considered good manners to set the user parameter to something meaningful (like email address).</p>
+<h2 id="conclusions"><a class="header" href="#conclusions">Conclusions</a></h2>
+<p>We went through the basic steps of analyzing a corpus and touched on more advanced topics, like morphological analysis and lemmatization. If you're doing a quick and dirty analysis, outsourcing those basic tasks to ready tools and APIs sounds like the best option. In case you need to run a large scale experiments, it makes more sense to run the tools on your own hardware.
+The lemmatized text might become a powerful input to a more sophisticated models, like recurrent neural networks. </p>
+<h2 id="citations"><a class="header" href="#citations">Citations</a></h2>
+<ul>
+<li>[1] <span id="cite-1"></span><a href="http://grzegorz.jagodzinski.prv.pl/gram/pl/gram01.html">http://grzegorz.jagodzinski.prv.pl: Polish grammar rules</a></li>
+<li>[2] <span id="cite-2"></span><a href="https://pl.wikipedia.org/wiki/Gramatyka_j%C4%99zyka_polskiego">Wikpedia: Polish grammar</a></li>
+<li>[3] <span id="cite-3"></span><a href="https://www.quora.com/How-many-words-are-there-in-the-Polish-language">Quora: how many words are the in the Polish language</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="youre-my-type-python-meet-static-typing"><a class="header" href="#youre-my-type-python-meet-static-typing">You're my type: Python, meet static typing</a></h1>
+<p>(originally published: 2020-09-19)</p>
+<p>If you’re writing Python code in a production environment, it’s quite likely that you have been using type hints or static type checking. Why do we need these tools? How can you use them when you’re developing your own project? I hope to answer these questions in this blogpost.</p>
+<h2 id="the-why"><a class="header" href="#the-why">The why</a></h2>
+<p>Python was designed as a dynamically typed language - the developer should be able to solve the problems quickly, iterating quickly in the interactive REPL. The type system will work things out transparently for the developer.</p>
+<pre><code class="language-python">def checkConstraintsList2(solution, data):
+    &quot;&quot;&quot;
+    This is an actual excerpt from a BEng thesis, python2 style.
+    Trying to infer the data types is painful, so is debugging or
+    extending this snippet.
+    :param solution:
+    :param data:
+    &quot;&quot;&quot;
+    for slot in range(0, data.periodsPerDay * data.daysNum):
+        for lecture in solution[slot]:
+            for constraint in data.getConstraintsForCourse(lecture[0]):
+                if slot == solution.mapKeys(constraint):
+                    print &quot;Violation lecture&quot;, lecture, &quot;slot&quot;, slot
+</code></pre>
+<p>Ugly Python2-style snippet from an ML project. Non-trivial data-structures make reading this a horrible experience.</p>
+<p>This approach works great for tiny, non-critical codebases, with a limited number of developers. Since even Google was at some point in time a tiny, non-critical codebase I’d advise you not to follow this path.</p>
+<h2 id="the-how"><a class="header" href="#the-how">The how</a></h2>
+<p><a href="https://www.python.org/dev/peps/pep-0484/#type-comments">PEP484</a> added type comments as a standardized way of adding type information to Python code.</p>
+<pre><code class="language-python">def weather(celsius): # type: (Optional[float]) -&gt; Union[str, Dict[str, str]]
+    if celsius is None:
+        return &quot;I don’t know what to say&quot;
+    return (
+        &quot;It’s rather warm&quot;
+        if celsius &gt; 20 else {&quot;opinion&quot;: &quot;Bring back summer :/&quot;}
+    )
+</code></pre>
+<p>The separation of the identifier and type hint makes it hard to read.</p>
+<p>This used to be the only way to add types to Python codebase until Python 3.6 got released, <a href="https://www.python.org/dev/peps/pep-0484/#id14">adding optional type hints to it’s grammar</a>:</p>
+<pre><code class="language-python">from typing import Dict, Optional, Union
+
+def weather(celsius: Optional[float]) -&gt; Union[str, Dict[str, str]]:
+    if celsius is None:
+        return &quot;I don’t know what to say&quot;
+    return (
+        &quot;It’s rather warm&quot;
+        if celsius &gt; 21 else {&quot;opinion&quot;: &quot;Bring back summer :/&quot;}
+    )
+</code></pre>
+<p>Much better. Please note - this code example introduced some additional import statements. These are not free, since Python interpreter needs to load code for that import, resulting in some barely noticeable overhead, depending on your codebase.</p>
+<p>If you’re looking to speed up your code, Cython uses a <a href="https://cython.readthedocs.io/en/latest/src/quickstart/cythonize.html#typing-variables">slightly altered Python syntax</a> of type annotations for compiling to machine code in for the sake of the speed.</p>
+<h2 id="the-wow"><a class="header" href="#the-wow">The wow</a></h2>
+<p>The type hints might be helpful for the developer, but humans commit errors all the time - you should definitely use a type checker to validate if your assumptions are correct. (And, catch some bugs before they hit you!)</p>
+<h2 id="how-do-you-introduce-types-in-your-codebase"><a class="header" href="#how-do-you-introduce-types-in-your-codebase">How do you introduce types in your codebase?</a></h2>
+<p>Most type checkers follow the approach of gradual introduction of enforcement of type correctness. The type checkers can infer the types of the variables or return types to some degree, but in this approach it’s the developers responsibility to gradually increase the coverage of strict type checking, usually module by module.</p>
+<p>Additionally, you can control either particular features of the type system being enforced (e.g. forbidding redefinition of a variable with a different type) or select one of the predefined strictness levels. The main issue is that it involves manual process - you need to define the order or modules in which you want to annotate your codebase and, well, manually do it.</p>
+<p>Pytype follows a completely different approach - it type checks the entire codebase by default, instead taking a very permissive take on type correctness - if it’s valid Python, it’s OK. This approach definitely makes sense in application to older or unmaintained projects with minimal or no type hints since it allows you to catch the basic type errors very quickly, with no changes made to the codebase. This sounds very tempting, but the long term solution should be to apply more strict type checking. Valid Python’s type system is just way too permissive.</p>
+<h2 id="most-popular-python-type-checkers-compared"><a class="header" href="#most-popular-python-type-checkers-compared">Most popular Python type checkers, compared</a></h2>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: right"></th><th><a href="http://mypy-lang.org/">Mypy</a></th><th><a href="https://github.com/google/pytype">pytype</a></th><th><a href="https://github.com/microsoft/pyright">Pyright</a></th><th>[Pyre](https://github.com/facebook/pyre-check</th></tr></thead><tbody>
+<tr><td style="text-align: right">Modes</td><td><a href="https://mypy.readthedocs.io/en/stable/command_line.html#miscellaneous-strictness-flags">Feature flags</a> for strictness checks</td><td>Lenient: if it runs, it’s valid</td><td>Multiple levels of strictness enforced per project and directory</td><td>Permissive / strict modes</td></tr>
+<tr><td style="text-align: right">Applying to existing code</td><td>Gradual</td><td>Runs on entire codebase, type hints completely optional</td><td>Gradual</td><td>Gradual</td></tr>
+<tr><td style="text-align: right">Implementation</td><td>Daemon mode, incremental updates</td><td>set of CLI tools</td><td>Typescript, daemon mode, incremental updates</td><td>Daemon mode with watchman, incremental updates</td></tr>
+<tr><td style="text-align: right">IDE integration</td><td><a href="https://github.com/tomv564/pyls-mypy">Incomplete LSP plugin</a></td><td><a href="https://github.com/google/pytype/issues/326">maybe someday</a></td><td>LSP, <a href="https://devblogs.microsoft.com/python/announcing-pylance-fast-feature-rich-language-support-for-python-in-visual-studio-code/">Pylance vscode extension</a>, vim</td><td>VSCode, vim, emacs</td></tr>
+<tr><td style="text-align: right">Extra points</td><td><a href="http://mypy-lang.org/about.html">Guido-approved</a></td><td><a href="https://github.com/google/pytype/tree/master/pytype/tools/merge_pyi">Merge-pyi</a> automatically merges type stubs into your codebase</td><td>Snappy vscode integration, no Python required - runs on node js</td><td>Built in Pysa - static security analysis tool</td></tr>
+</tbody></table>
+</div>
+<h2 id="third-party-libraries"><a class="header" href="#third-party-libraries">Third-party libraries</a></h2>
+<p>Not all libraries you use are type annotated - that’s a sad fact. There are two solutions to this problem - either just annotate them, or use type stubs. If you’re using a library, you care only about the exported data structures and function signature types. Some typecheckers utilize an official collection of type annotations maintained as a part of Python project - Typeshed (see <a href="https://github.com/python/typeshed/blob/master/third_party/3/pytest_mock/plugin.pyi">example type stubs file</a>). If you find a project that doesn’t have type hints, you can contribute your annotations to that repo, for the benefit of everyone!</p>
+<pre><code class="language-python">class TcpWSGIServer(BaseWSGIServer):
+    def bind_server_socket(self) -&gt; None: ...
+    def getsockname(self) -&gt; Tuple[str, Tuple[str, int]]: ...
+    def set_socket_options(self, conn: SocketType) -&gt; None: ...
+</code></pre>
+<p>The ... is an Ellipsis object. Since it's builtin constant, the code above is valid Python, albeit useless (besides being type stub).</p>
+<p>Some static type checkers create pyi stubs behind the scenes. Pytype allows you to combine the inferred type stubs with the code using a single command. This is really neat - you can seed the initial types in your code with a single command - although the quality of the annotations is quite weak, since Pytype is a lenient tool, you will see Any wildcard type a lot.
+Type hints: beyond static type checking</p>
+<p>The type-correctness is not the only use case of the type hints. Here you can find some neat projects making good use of type annotations:</p>
+<h3 id="pydantic"><a class="header" href="#pydantic">Pydantic</a></h3>
+<p><a href="https://github.com/samuelcolvin/pydantic">Pydantic</a> allows you to specify and validate your data model using intuitive type-annotated classes. It’s super fast and is a foundation of FastAPI web framework (request/response models and validations).</p>
+<pre><code class="language-python">from typing import List, Optional
+
+from fastapi import FastAPI
+from pydantic import BaseModel
+
+app = FastAPI()
+
+
+class Item(BaseModel):
+    name: str
+    tax: Optional[float] = None
+    tags: List[str] = []
+
+
+@app.post(&quot;/items/&quot;, response_model=Item)
+async def create_item(item: Item):
+    return item
+</code></pre>
+<p>You get request and response validation for free.</p>
+<h3 id="typer"><a class="header" href="#typer">Typer</a></h3>
+<p>Generating CLIs using just type-annotated functions. <a href="https://github.com/tiangolo/typer">Typer</a> takes care of parsing, validating and generating boilerplate for you.</p>
+<h3 id="hypothesis"><a class="header" href="#hypothesis">Hypothesis</a></h3>
+<p><a href="https://hypothesis.readthedocs.io/en/latest/quickstart.html">Hypothesis</a> is a library enabling property-based testing for pytest. Instead of crafting custom unit test examples, you specify functions generating the test cases for you. Or… you can use inferred strategies which will sample the space of all valid values for a given type!</p>
+<pre><code class="language-python">from hypothesis import given, infer
+
+@given(username=infer, article_id=infer, comment=infer)
+def test_adding_comment(username: str, article_id: int, comment: str):
+    with mock_article(article_id):
+    comment_id = add_comment(username, comment)
+    assert comment_id is not None
+</code></pre>
+<p>Inferred strategies are a good start, but you should limit the search space of your examples to match your assumptions (would you expect your article_ids to be negative?)</p>
+<h2 id="outro"><a class="header" href="#outro">Outro</a></h2>
+<p>Static type checking gives the developers additional layer of validation of their code against the common type errors. With the wonders of static analysis, you can significantly reduce the number of bugs, make contributing to the code easier and catch some non-trivial security issues.</p>
+<p><img src="https://media.giphy.com/media/l4pTjOu0NsrLApt0Q/giphy-downsized.gif" alt="that's all" /></p>
+<p>Thanks</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+
+        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+
+    </body>
+</html>

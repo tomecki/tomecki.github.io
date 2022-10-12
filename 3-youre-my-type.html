@@ -1,0 +1,298 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>You&#x27;re my type: Python, meet static typing</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="minifying_docker_images.html"><strong aria-hidden="true">1.</strong> Minifying docker images</a></li><li class="chapter-item expanded "><a href="1-getting-started-nlp.html"><strong aria-hidden="true">2.</strong> Getting started with NLP in Polish</a></li><li class="chapter-item expanded "><a href="3-youre-my-type.html" class="active"><strong aria-hidden="true">3.</strong> You're my type: Python, meet static typing</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="youre-my-type-python-meet-static-typing"><a class="header" href="#youre-my-type-python-meet-static-typing">You're my type: Python, meet static typing</a></h1>
+<p>(originally published: 2020-09-19)</p>
+<p>If you’re writing Python code in a production environment, it’s quite likely that you have been using type hints or static type checking. Why do we need these tools? How can you use them when you’re developing your own project? I hope to answer these questions in this blogpost.</p>
+<h2 id="the-why"><a class="header" href="#the-why">The why</a></h2>
+<p>Python was designed as a dynamically typed language - the developer should be able to solve the problems quickly, iterating quickly in the interactive REPL. The type system will work things out transparently for the developer.</p>
+<pre><code class="language-python">def checkConstraintsList2(solution, data):
+    &quot;&quot;&quot;
+    This is an actual excerpt from a BEng thesis, python2 style.
+    Trying to infer the data types is painful, so is debugging or
+    extending this snippet.
+    :param solution:
+    :param data:
+    &quot;&quot;&quot;
+    for slot in range(0, data.periodsPerDay * data.daysNum):
+        for lecture in solution[slot]:
+            for constraint in data.getConstraintsForCourse(lecture[0]):
+                if slot == solution.mapKeys(constraint):
+                    print &quot;Violation lecture&quot;, lecture, &quot;slot&quot;, slot
+</code></pre>
+<p>Ugly Python2-style snippet from an ML project. Non-trivial data-structures make reading this a horrible experience.</p>
+<p>This approach works great for tiny, non-critical codebases, with a limited number of developers. Since even Google was at some point in time a tiny, non-critical codebase I’d advise you not to follow this path.</p>
+<h2 id="the-how"><a class="header" href="#the-how">The how</a></h2>
+<p><a href="https://www.python.org/dev/peps/pep-0484/#type-comments">PEP484</a> added type comments as a standardized way of adding type information to Python code.</p>
+<pre><code class="language-python">def weather(celsius): # type: (Optional[float]) -&gt; Union[str, Dict[str, str]]
+    if celsius is None:
+        return &quot;I don’t know what to say&quot;
+    return (
+        &quot;It’s rather warm&quot;
+        if celsius &gt; 20 else {&quot;opinion&quot;: &quot;Bring back summer :/&quot;}
+    )
+</code></pre>
+<p>The separation of the identifier and type hint makes it hard to read.</p>
+<p>This used to be the only way to add types to Python codebase until Python 3.6 got released, <a href="https://www.python.org/dev/peps/pep-0484/#id14">adding optional type hints to it’s grammar</a>:</p>
+<pre><code class="language-python">from typing import Dict, Optional, Union
+
+def weather(celsius: Optional[float]) -&gt; Union[str, Dict[str, str]]:
+    if celsius is None:
+        return &quot;I don’t know what to say&quot;
+    return (
+        &quot;It’s rather warm&quot;
+        if celsius &gt; 21 else {&quot;opinion&quot;: &quot;Bring back summer :/&quot;}
+    )
+</code></pre>
+<p>Much better. Please note - this code example introduced some additional import statements. These are not free, since Python interpreter needs to load code for that import, resulting in some barely noticeable overhead, depending on your codebase.</p>
+<p>If you’re looking to speed up your code, Cython uses a <a href="https://cython.readthedocs.io/en/latest/src/quickstart/cythonize.html#typing-variables">slightly altered Python syntax</a> of type annotations for compiling to machine code in for the sake of the speed.</p>
+<h2 id="the-wow"><a class="header" href="#the-wow">The wow</a></h2>
+<p>The type hints might be helpful for the developer, but humans commit errors all the time - you should definitely use a type checker to validate if your assumptions are correct. (And, catch some bugs before they hit you!)</p>
+<h2 id="how-do-you-introduce-types-in-your-codebase"><a class="header" href="#how-do-you-introduce-types-in-your-codebase">How do you introduce types in your codebase?</a></h2>
+<p>Most type checkers follow the approach of gradual introduction of enforcement of type correctness. The type checkers can infer the types of the variables or return types to some degree, but in this approach it’s the developers responsibility to gradually increase the coverage of strict type checking, usually module by module.</p>
+<p>Additionally, you can control either particular features of the type system being enforced (e.g. forbidding redefinition of a variable with a different type) or select one of the predefined strictness levels. The main issue is that it involves manual process - you need to define the order or modules in which you want to annotate your codebase and, well, manually do it.</p>
+<p>Pytype follows a completely different approach - it type checks the entire codebase by default, instead taking a very permissive take on type correctness - if it’s valid Python, it’s OK. This approach definitely makes sense in application to older or unmaintained projects with minimal or no type hints since it allows you to catch the basic type errors very quickly, with no changes made to the codebase. This sounds very tempting, but the long term solution should be to apply more strict type checking. Valid Python’s type system is just way too permissive.</p>
+<h2 id="most-popular-python-type-checkers-compared"><a class="header" href="#most-popular-python-type-checkers-compared">Most popular Python type checkers, compared</a></h2>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: right"></th><th><a href="http://mypy-lang.org/">Mypy</a></th><th><a href="https://github.com/google/pytype">pytype</a></th><th><a href="https://github.com/microsoft/pyright">Pyright</a></th><th>[Pyre](https://github.com/facebook/pyre-check</th></tr></thead><tbody>
+<tr><td style="text-align: right">Modes</td><td><a href="https://mypy.readthedocs.io/en/stable/command_line.html#miscellaneous-strictness-flags">Feature flags</a> for strictness checks</td><td>Lenient: if it runs, it’s valid</td><td>Multiple levels of strictness enforced per project and directory</td><td>Permissive / strict modes</td></tr>
+<tr><td style="text-align: right">Applying to existing code</td><td>Gradual</td><td>Runs on entire codebase, type hints completely optional</td><td>Gradual</td><td>Gradual</td></tr>
+<tr><td style="text-align: right">Implementation</td><td>Daemon mode, incremental updates</td><td>set of CLI tools</td><td>Typescript, daemon mode, incremental updates</td><td>Daemon mode with watchman, incremental updates</td></tr>
+<tr><td style="text-align: right">IDE integration</td><td><a href="https://github.com/tomv564/pyls-mypy">Incomplete LSP plugin</a></td><td><a href="https://github.com/google/pytype/issues/326">maybe someday</a></td><td>LSP, <a href="https://devblogs.microsoft.com/python/announcing-pylance-fast-feature-rich-language-support-for-python-in-visual-studio-code/">Pylance vscode extension</a>, vim</td><td>VSCode, vim, emacs</td></tr>
+<tr><td style="text-align: right">Extra points</td><td><a href="http://mypy-lang.org/about.html">Guido-approved</a></td><td><a href="https://github.com/google/pytype/tree/master/pytype/tools/merge_pyi">Merge-pyi</a> automatically merges type stubs into your codebase</td><td>Snappy vscode integration, no Python required - runs on node js</td><td>Built in Pysa - static security analysis tool</td></tr>
+</tbody></table>
+</div>
+<h2 id="third-party-libraries"><a class="header" href="#third-party-libraries">Third-party libraries</a></h2>
+<p>Not all libraries you use are type annotated - that’s a sad fact. There are two solutions to this problem - either just annotate them, or use type stubs. If you’re using a library, you care only about the exported data structures and function signature types. Some typecheckers utilize an official collection of type annotations maintained as a part of Python project - Typeshed (see <a href="https://github.com/python/typeshed/blob/master/third_party/3/pytest_mock/plugin.pyi">example type stubs file</a>). If you find a project that doesn’t have type hints, you can contribute your annotations to that repo, for the benefit of everyone!</p>
+<pre><code class="language-python">class TcpWSGIServer(BaseWSGIServer):
+    def bind_server_socket(self) -&gt; None: ...
+    def getsockname(self) -&gt; Tuple[str, Tuple[str, int]]: ...
+    def set_socket_options(self, conn: SocketType) -&gt; None: ...
+</code></pre>
+<p>The ... is an Ellipsis object. Since it's builtin constant, the code above is valid Python, albeit useless (besides being type stub).</p>
+<p>Some static type checkers create pyi stubs behind the scenes. Pytype allows you to combine the inferred type stubs with the code using a single command. This is really neat - you can seed the initial types in your code with a single command - although the quality of the annotations is quite weak, since Pytype is a lenient tool, you will see Any wildcard type a lot.
+Type hints: beyond static type checking</p>
+<p>The type-correctness is not the only use case of the type hints. Here you can find some neat projects making good use of type annotations:</p>
+<h3 id="pydantic"><a class="header" href="#pydantic">Pydantic</a></h3>
+<p><a href="https://github.com/samuelcolvin/pydantic">Pydantic</a> allows you to specify and validate your data model using intuitive type-annotated classes. It’s super fast and is a foundation of FastAPI web framework (request/response models and validations).</p>
+<pre><code class="language-python">from typing import List, Optional
+
+from fastapi import FastAPI
+from pydantic import BaseModel
+
+app = FastAPI()
+
+
+class Item(BaseModel):
+    name: str
+    tax: Optional[float] = None
+    tags: List[str] = []
+
+
+@app.post(&quot;/items/&quot;, response_model=Item)
+async def create_item(item: Item):
+    return item
+</code></pre>
+<p>You get request and response validation for free.</p>
+<h3 id="typer"><a class="header" href="#typer">Typer</a></h3>
+<p>Generating CLIs using just type-annotated functions. <a href="https://github.com/tiangolo/typer">Typer</a> takes care of parsing, validating and generating boilerplate for you.</p>
+<h3 id="hypothesis"><a class="header" href="#hypothesis">Hypothesis</a></h3>
+<p><a href="https://hypothesis.readthedocs.io/en/latest/quickstart.html">Hypothesis</a> is a library enabling property-based testing for pytest. Instead of crafting custom unit test examples, you specify functions generating the test cases for you. Or… you can use inferred strategies which will sample the space of all valid values for a given type!</p>
+<pre><code class="language-python">from hypothesis import given, infer
+
+@given(username=infer, article_id=infer, comment=infer)
+def test_adding_comment(username: str, article_id: int, comment: str):
+    with mock_article(article_id):
+    comment_id = add_comment(username, comment)
+    assert comment_id is not None
+</code></pre>
+<p>Inferred strategies are a good start, but you should limit the search space of your examples to match your assumptions (would you expect your article_ids to be negative?)</p>
+<h2 id="outro"><a class="header" href="#outro">Outro</a></h2>
+<p>Static type checking gives the developers additional layer of validation of their code against the common type errors. With the wonders of static analysis, you can significantly reduce the number of bugs, make contributing to the code easier and catch some non-trivial security issues.</p>
+<p><img src="https://media.giphy.com/media/l4pTjOu0NsrLApt0Q/giphy-downsized.gif" alt="that's all" /></p>
+<p>Thanks</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="1-getting-started-nlp.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="1-getting-started-nlp.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>
