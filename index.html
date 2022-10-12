@@ -1,5 +1,293 @@
-<!doctype html> <html lang=en> <head> <meta charset=utf-8> <meta content="width=device-width,initial-scale=1" name=viewport> <meta content=#333333 name=theme-color> <meta content="This is Tomek Dziopa's home page. Please stand clear of the closing doors." name=description> <base href=/ > <link href=global.css rel=stylesheet> <link href=manifest.json rel=manifest crossorigin=use-credentials> <link href=favicon.png rel=icon type=image/png> <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119904159-1"></script> <script> window.dataLayer = window.dataLayer || [];
-		function gtag() { dataLayer.push(arguments); }
-		gtag('js', new Date());
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Minifying docker images</title>
 
-		gtag('config', 'UA-119904159-1'); </script> <link href=client/main.38969126.css rel=stylesheet><link href=client/index.a64776d9.css rel=stylesheet><link href=client/client.9caea21e.css rel=stylesheet> <noscript id=sapper-head-start></noscript><title>Dziopa.com</title><noscript id=sapper-head-end></noscript> </head> <body> <div id=sapper> <nav class=svelte-x6z7kg><ul class=svelte-x6z7kg><li class=svelte-x6z7kg><a class=svelte-x6z7kg href=. aria-current=page>home</a></li> <li class=svelte-x6z7kg><a class=svelte-x6z7kg href=about>about</a></li> <li class=svelte-x6z7kg><a class=svelte-x6z7kg href=blog rel=prefetch>blog</a></ul></nav> <main class=svelte-1uhnsl8> <div><h1 class=svelte-11lekyz>Tomasz Dziopa</h1> <p class=svelte-11lekyz>This is the place where I will be sharing my thoughts and tinkering. Hope you will like it!</div></main></div> <script>__SAPPER__={baseUrl:"",preloaded:[void 0,{}]};if('serviceWorker' in navigator)navigator.serviceWorker.register('/service-worker.js');var s=document.createElement("script");try{new Function("if(0)import('')")();s.src="/client/client.9caea21e.js";s.type="module";s.crossOrigin="use-credentials";}catch(e){s.src="/client/shimport@1.0.1.js";s.setAttribute("data-main","/client/client.9caea21e.js")}document.head.appendChild(s)</script> 
+
+        <!-- Custom HTML head -->
+        
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="minifying_docker_images.html" class="active"><strong aria-hidden="true">1.</strong> Minifying docker images</a></li><li class="chapter-item expanded "><a href="1-getting-started-nlp.html"><strong aria-hidden="true">2.</strong> Getting started with NLP in Polish</a></li><li class="chapter-item expanded "><a href="3-youre-my-type.html"><strong aria-hidden="true">3.</strong> You're my type: Python, meet static typing</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="put-your-docker-images-on-a-diet"><a class="header" href="#put-your-docker-images-on-a-diet">Put your docker images on a diet</a></h1>
+<h2 id="why-big--bad"><a class="header" href="#why-big--bad">Why big = bad?</a></h2>
+<p>Large images are bad in two ways:</p>
+<ul>
+<li>they take up a lot of space on the disk. Docker daemon enforces an upper bound on the total size of images on your disk - if you rebuild the images frequently and they are large, you will end up cleaning up your cache very frequently.</li>
+<li>they take a lot of time to download. This is bad, because:
+<ul>
+<li>not everyone has an unlimited broadband connection! It sucks when you have to download fat docker image using your cafe's shitty wifi or using your mobile plan allowance</li>
+<li>there are cases when bandwidth can become costly. If you host your images in a private repo at your cloud provider, it's quite likely that they'll charge you for egress bytes.</li>
+</ul>
+</li>
+</ul>
+<p>So - how big is it?</p>
+<pre><code>docker image list | grep &lt;image name&gt;
+</code></pre>
+<p>will list all available tags for your image with their uncompressed sizes. This is how much the image actually takes on your hard drive.</p>
+<pre><code>docker manifest inspect &lt;image&gt; | jq &quot;.layers | map(.size) | add / 1024&quot;
+</code></pre>
+<p>will output a single number: the total size in MB of compressed layers. This is how much needs to be downloaded over the network in case of layer cache misses (worst case).</p>
+<h2 id="best-practices"><a class="header" href="#best-practices">Best practices</a></h2>
+<p>Generic advice is all about understanding how docker image layers work. In general, each layer contains only a set of differences from the previous layer. This applies to not only <em>adding</em> and <em>updating</em> files, but also <strong>removing</strong>.</p>
+<p>In order to keep your keep your layer sizes small, only persist changes which are relevant to functioning of the final container. Do not persist: package manager caches, downloaded installers and tremporary artifacts.</p>
+<p>Common strategy to solving this problem is chaining installing and cleanup commands as a single layer definition. </p>
+<p>instead of doing this:</p>
+<pre><code>FROM ubuntu:20.04                    # 66 MB
+RUN apt update                      # 27 MB
+RUN apt install -y curl libpq-dev   # 16 MB
+# total size: 109 MB
+</code></pre>
+<p>do:</p>
+<pre><code>FROM ubuntu:20.04                     # 66 MB
+# removing apt cache after successful installation of dependencies
+RUN apt update \                     # 16 MB
+    &amp;&amp; apt install -y curl libpq-dev \
+    &amp;&amp; rm -rf /var/lib/apt/lists/*
+# total size: 82 MB
+</code></pre>
+<p>Another common approach to solving this problem is to use multi-stage build. Generally, the idea here is to perform some potentially heavy operations (e.g. compiling a binary from sources) in a separate layer, and then to copy just the resulting artifacts into new, &quot;clean&quot; layer. Example:</p>
+<pre><code># Stage 1: build the Rust binary.
+FROM rust:1.40 as builder
+WORKDIR /usr/src/myapp
+COPY . .
+RUN cargo install --path .
+
+# Stage 2: install runtime dependencies and copy the static binary into
+a clean image
+
+FROM debian:buster-slim
+RUN apt-get update \
+    &amp;&amp; apt-get install -y extra-runtime-dependencies \
+    &amp;&amp; rm -rf /var/lib/apt/lists/*
+COPY --from=builder /usr/local/cargo/bin/myapp /usr/local/bin/myapp
+CMD [&quot;myapp&quot;]
+</code></pre>
+<p>Since every package manager has it's own arguments and best practices, the easiest way to manage this complexity is to use a tool which can find quick-wins in your Dockerfile definition. Open source <strong><a href="https://github.com/hadolint/hadolint">hadolint</a></strong> analyzes your Dockerfile for common issues.</p>
+<h2 id="removing-cruft"><a class="header" href="#removing-cruft">Removing cruft</a></h2>
+<p>If you've been developing with your Dockerfile for some time, there's a good chance you experimented with different libraries and dependencies, which often have the same purpose. The general advice here is: take a step back and analyze every dependency in your Dockerfile. <strong>Throw away each and every dependency which is not essential to the purpose of the image</strong>.</p>
+<p>Another very effective approach at elliminating cruft is to examine the contents of the image layers. I cannot recommend enough <strong><a href="https://github.com/wagoodman/dive">dive</a></strong> CLI, which lets you look at the changes applied by each layer and hints at the largest and repeatedly modified files in the image.</p>
+<p>By examining docker build trace you may also identify that you're installing GUI-specific packages (e.g. GNOME icons, extra fonts) which shouldn't be required for your console-only application. Good practice is to analyze the reverse dependencies of these packages and look for top-level packages which triggered the installation of the unexpected fonts. E.g. <a href="https://packages.ubuntu.com/bionic/openjdk-11-jre">openjdk-11-jre package</a> bundles suite of dependencies for developing UI apps. Some tips on debugging the issue:</p>
+<ul>
+<li>just try removing the suspicious system package. Package managers should resolve the unmet dependencies and suggest potential top-level offending package as scheduled for removal.</li>
+<li>use tools like <code>apt-rdepends &lt;package&gt;</code> to see a flattened list of packages which depend on the <code>&lt;package&gt;</code>.</li>
+</ul>
+<h2 id="base-image-choice"><a class="header" href="#base-image-choice">Base image choice</a></h2>
+<p>Choosing the base image is one of the very first decisions people make when creating new image. It's quite common that the choice is affected by e.g. some example image on github, or what's already being used among your colleagues or organization.</p>
+<p>Changing the base image can be quite significant to the overall image, but sometimes it's definitely worth revisiting that. Here's a quick walthrough of common points for consideration:</p>
+<ul>
+<li>choosing a <code>-slim</code> image variant. Some distros (e.g. debian) offer a stripped-down version, with features which are redundant to most images removed. For non-interactive console applications, you usually do not need documentation and man pages.</li>
+<li><code>alpine</code> images - <code>alpine</code> is a container-optimized linux distribution, which uses it's own package manager (<code>apk</code>) and alternative implementation of <code>libc</code>, <code>musl</code>. The final images are usually very small, although there are some limitations:
+<ul>
+<li>in case your application relies on <code>libc</code>, you will need to recompile it for <code>musl</code>.</li>
+<li>own package repository is sometimes lacking in comparison to <code>debian</code> and the versions may not be updated as frequently</li>
+<li>relatively small community support</li>
+</ul>
+</li>
+<li><code>distroless</code> images - the slimming down approach taken to extreme, with virtually <em>all</em> non-essential components (including shell!) of the operating system stripped out from debian images. Conceptually, the application and all it's dependencies should be copied into the <em>distroless</em> image from a previous image stage (see <a href="https://github.com/GoogleContainerTools/distroless/blob/main/examples/python3-requirements/Dockerfile">example Dockerfile</a>, more usages in <a href="https://github.com/kubernetes/kubernetes/search?q=distroless">kubernetes</a>)
+<ul>
+<li>could be a good choice if your application is statically linked <em>or</em> has a well-defined set of dependencies (think: limited set of shared libraries). </li>
+</ul>
+</li>
+</ul>
+<h2 id="image-specialization"><a class="header" href="#image-specialization">Image specialization</a></h2>
+<p>Common issue with rapidly evolving codebases is that the images are not specialized - image serves as a common execution environment for a very distinct use cases. For the purpose of this section, let's call these &quot;furball&quot; images.</p>
+<p>Best practice is to identify the key use cases of the particular components and build dedicated images for these use cases. This way you can encourage better separation of concerns in your codebase.</p>
+<p>Assuming all the images are retaining <em>all</em> their dependencies, in best case you will experience summed size of all specialized layers to be exactly the same as the &quot;furball&quot; image. But, the benefits are substantial:</p>
+<ul>
+<li>specialization may encourage deeper cleanup of the dependencies</li>
+<li>specialization may encourage bigger changes in the organization of the codebase, like factoring the code into components.</li>
+<li>running specialized workflow will require fetching way smaller image</li>
+<li>Since you usually don't work on all components at the same time, you'll experience significant improvement in quality of life - you'll be downloading just the dependencies used by your component!</li>
+</ul>
+<h2 id="runtime-tools"><a class="header" href="#runtime-tools">Runtime tools</a></h2>
+<p>There were multiple attempts to minify the docker images by analyzing the runtime usage of files within the container. How this is supposed to work:</p>
+<ol>
+<li>spin up the container with a sidecar container tracking every access to a file inside the filesystem</li>
+<li>Perform actions on the running container covering all of the use cases of the image.</li>
+<li>Let the tool export the image containing just the files from the filesystem which were accessed in previous step.</li>
+</ol>
+<p>The results of this workflow can be very good, although your results may vary depending on the use cases. Some points for consideration:</p>
+<ul>
+<li>the image is no longer a result of <code>docker build</code></li>
+<li>the slimming down workflow may remove some files from the image which can affect the functionality of the image or it's security =&gt; <strong>how much do you trust the tool that the image is secure and correct</strong>?</li>
+<li>image may not be suitable for any other use case than the one used in the slimming down process. This may be a showstopper for the images used for experimentation.</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+                            <a rel="next" href="1-getting-started-nlp.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+                    <a rel="next" href="1-getting-started-nlp.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>
