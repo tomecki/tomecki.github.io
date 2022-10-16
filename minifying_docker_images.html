@@ -7,7 +7,15 @@
 
 
         <!-- Custom HTML head -->
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119904159-1"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
         
+          gtag('config', 'UA-119904159-1');
+        </script>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -81,7 +89,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="minifying_docker_images.html" class="active"><strong aria-hidden="true">1.</strong> Minifying docker images</a></li><li class="chapter-item expanded "><a href="1-getting-started-nlp.html"><strong aria-hidden="true">2.</strong> Getting started with NLP in Polish</a></li><li class="chapter-item expanded "><a href="3-youre-my-type.html"><strong aria-hidden="true">3.</strong> You're my type: Python, meet static typing</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="hello.html">Hello</a></li><li class="chapter-item expanded affix "><li class="part-title">Table of contents</li><li class="chapter-item expanded "><a href="minifying_docker_images.html" class="active"><strong aria-hidden="true">1.</strong> Minifying docker images</a></li><li class="chapter-item expanded "><a href="1-getting-started-nlp.html"><strong aria-hidden="true">2.</strong> Getting started with NLP in Polish</a></li><li class="chapter-item expanded "><a href="3-youre-my-type.html"><strong aria-hidden="true">3.</strong> You're my type: Python, meet static typing</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -251,6 +259,9 @@ CMD [&quot;myapp&quot;]
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="hello.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
 
                             <a rel="next" href="1-getting-started-nlp.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
@@ -262,6 +273,9 @@ CMD [&quot;myapp&quot;]
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="hello.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
 
                     <a rel="next" href="1-getting-started-nlp.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
