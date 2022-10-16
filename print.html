@@ -154,6 +154,14 @@
                         <h1 id="hello"><a class="header" href="#hello">Hello</a></h1>
 <p>My name is Tomasz Dziopa and this is my space for scribbling thoughts.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="put-your-docker-images-on-a-diet"><a class="header" href="#put-your-docker-images-on-a-diet">Put your docker images on a diet</a></h1>
+<ul>
+<li><a href="minifying_docker_images.html#why-big--bad">Why big = bad?</a></li>
+<li><a href="minifying_docker_images.html#best-practices">Best practices</a></li>
+<li><a href="minifying_docker_images.html#removing-cruft">Removing cruft</a></li>
+<li><a href="minifying_docker_images.html#base-image-choice">Base image choice</a></li>
+<li><a href="minifying_docker_images.html#image-specialization">Image specialization</a></li>
+<li><a href="minifying_docker_images.html#runtime-tools">Runtime tools</a></li>
+</ul>
 <h2 id="why-big--bad"><a class="header" href="#why-big--bad">Why big = bad?</a></h2>
 <p>Large images are bad in two ways:</p>
 <ul>
@@ -258,6 +266,33 @@ CMD [&quot;myapp&quot;]
 <li>image may not be suitable for any other use case than the one used in the slimming down process. This may be a showstopper for the images used for experimentation.</li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="getting-started-with-natural-language-processing-in-polish"><a class="header" href="#getting-started-with-natural-language-processing-in-polish">Getting started with Natural Language Processing in Polish</a></h1>
+<ul>
+<li><a href="1-getting-started-nlp.html#corpus">Corpus</a></li>
+<li><a href="1-getting-started-nlp.html#tokenizing">Tokenizing</a></li>
+<li><a href="1-getting-started-nlp.html#quantitative-analysis-corpus">Quantitative analysis: corpus</a>
+<ul>
+<li><a href="1-getting-started-nlp.html#frequent-words-unigrams">Frequent words (unigrams)</a>
+<ul>
+<li><a href="1-getting-started-nlp.html#word-cloud">Word cloud</a></li>
+</ul>
+</li>
+<li><a href="1-getting-started-nlp.html#ngrams">Ngrams</a>
+<ul>
+<li><a href="1-getting-started-nlp.html#bigrams">Bigrams</a></li>
+<li><a href="1-getting-started-nlp.html#sixgrams">Sixgrams</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="1-getting-started-nlp.html#morphological-analysis">Morphological analysis</a>
+<ul>
+<li><a href="1-getting-started-nlp.html#usage">Usage</a></li>
+<li><a href="1-getting-started-nlp.html#lemmatization">Lemmatization</a></li>
+</ul>
+</li>
+<li><a href="1-getting-started-nlp.html#conclusions">Conclusions</a></li>
+<li><a href="1-getting-started-nlp.html#citations">Citations</a></li>
+</ul>
 <p>There are countless tutorials on how to do NLP on the internet. Why would you care to read another one? Well, we will be looking into analysing Polish language, which is still rather underdeveloped in comparison to English. </p>
 <p>Polish language is much more complex when compared to English language, as it contains 7 cases  (<em>deklinacja</em>), 3 kinds (masculine, femenine, unspecified) and 11 different templates of verb conjugation, not to mention the exceptions <a href="1-getting-started-nlp.html#cite-1">[1]</a> <a href="1-getting-started-nlp.html#cite-2">[2]</a> <a href="1-getting-started-nlp.html#cite-3">[3]</a>. English is rather simple: verb conjugation is easy, nouns pluralise easily, there are hardly any genders.</p>
 <h2 id="corpus"><a class="header" href="#corpus">Corpus</a></h2>
@@ -416,6 +451,21 @@ The lemmatized text might become a powerful input to a more sophisticated models
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="youre-my-type-python-meet-static-typing"><a class="header" href="#youre-my-type-python-meet-static-typing">You're my type: Python, meet static typing</a></h1>
 <p>(originally published: 2020-09-19)</p>
+<ul>
+<li><a href="3-youre-my-type.html#the-why">The why</a></li>
+<li><a href="3-youre-my-type.html#the-how">The how</a></li>
+<li><a href="3-youre-my-type.html#the-wow">The wow</a></li>
+<li><a href="3-youre-my-type.html#how-do-you-introduce-types-in-your-codebase">How do you introduce types in your codebase?</a></li>
+<li><a href="3-youre-my-type.html#most-popular-python-type-checkers-compared">Most popular Python type checkers, compared</a></li>
+<li><a href="3-youre-my-type.html#third-party-libraries">Third-party libraries</a>
+<ul>
+<li><a href="3-youre-my-type.html#pydantic">Pydantic</a></li>
+<li><a href="3-youre-my-type.html#typer">Typer</a></li>
+<li><a href="3-youre-my-type.html#hypothesis">Hypothesis</a></li>
+</ul>
+</li>
+<li><a href="3-youre-my-type.html#outro">Outro</a></li>
+</ul>
 <p>If you’re writing Python code in a production environment, it’s quite likely that you have been using type hints or static type checking. Why do we need these tools? How can you use them when you’re developing your own project? I hope to answer these questions in this blogpost.</p>
 <h2 id="the-why"><a class="header" href="#the-why">The why</a></h2>
 <p>Python was designed as a dynamically typed language - the developer should be able to solve the problems quickly, iterating quickly in the interactive REPL. The type system will work things out transparently for the developer.</p>
